@@ -1,6 +1,8 @@
 #!/bin/bash
-set -e
+set -e # エラーが発生するとスクリプトを終了する意味
 
-rm -f /docker_rails/tmp/pids/server.pid
+# server.pid が存在するとサーバーが起動できない対策のために server.pid を削除するように設定
+rm -f /myapp/tmp/pids/server.pid
 
+# DockerfileのCMDで渡されたコマンド（Railsサーバー起動）を実行
 exec "$@"
